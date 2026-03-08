@@ -73,7 +73,7 @@ export default function RotsWebLanding() {
     }
   ];
 
-  // Animation Variants typed strictly for TypeScript
+  // Animation Variants
   const containerVariants: Variants = {
     hidden: { opacity: 0 },
     visible: {
@@ -92,7 +92,7 @@ export default function RotsWebLanding() {
     visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } }
   };
 
-  // Spotlight Effect Handler
+  // Spotlight Effect Handler (Desktop only mostly)
   const handleSpotlight = (e: React.MouseEvent<HTMLDivElement>) => {
     const rect = e.currentTarget.getBoundingClientRect();
     const x = e.clientX - rect.left;
@@ -104,12 +104,6 @@ export default function RotsWebLanding() {
   return (
     <div dir="rtl" className="min-h-screen bg-[#050505] text-zinc-300 font-sans selection:bg-zinc-800 selection:text-white overflow-x-hidden scroll-smooth relative">
       
-      {/* CSS להסתרת פס הגלילה האופקי במובייל אבל להשאיר את האפשרות לגלול */}
-      <style dangerouslySetInnerHTML={{__html: `
-        .hide-scrollbar::-webkit-scrollbar { display: none; }
-        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
-      `}} />
-
       {/* Cinematic Grain Overlay */}
       <div 
         className="pointer-events-none fixed inset-0 z-[60] h-full w-full opacity-[0.03] mix-blend-overlay" 
@@ -267,7 +261,7 @@ export default function RotsWebLanding() {
         </div>
       </header>
 
-      {/* Services Section */}
+      {/* Services Section - RESTORED TO VERTICAL STACK ON MOBILE */}
       <section id="services" className="py-32 relative z-10 bg-zinc-950/20 border-t border-zinc-900/30 overflow-hidden">
         <div className="max-w-7xl mx-auto px-6">
           <motion.div 
@@ -281,7 +275,8 @@ export default function RotsWebLanding() {
             <div className="h-px w-12 bg-zinc-600 mt-4"></div>
           </motion.div>
 
-          <div className="flex md:grid md:grid-cols-3 gap-6 lg:gap-8 overflow-x-auto hide-scrollbar snap-x snap-mandatory pb-8 md:pb-0 -mx-6 px-6 md:mx-0 md:px-0">
+          {/* Regular Grid for both Mobile (1 column) and Desktop (3 columns) */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
             {services.map((item, idx) => (
               <motion.div 
                 key={idx}
@@ -294,8 +289,9 @@ export default function RotsWebLanding() {
                 } as Variants}
                 onMouseMove={handleSpotlight}
                 whileTap={{ scale: 0.98 }}
-                className="group min-w-[85vw] md:min-w-0 snap-center relative p-10 rounded-[2.5rem] bg-[#0A0A0A] border border-white/[0.03] transition-all duration-500 overflow-hidden flex-shrink-0"
+                className="group relative p-10 rounded-[2.5rem] bg-[#0A0A0A] border border-white/[0.03] transition-all duration-500 overflow-hidden"
               >
+                {/* CSS Magic for Mouse Spotlight */}
                 <div 
                   className="hidden md:block pointer-events-none absolute -inset-px rounded-[2.5rem] opacity-0 transition duration-300 group-hover:opacity-100"
                   style={{ background: `radial-gradient(600px circle at var(--mouse-x, 0) var(--mouse-y, 0), rgba(255,255,255,0.06), transparent 40%)` }}
@@ -323,7 +319,7 @@ export default function RotsWebLanding() {
         >
           <h2 className="text-4xl md:text-6xl font-extrabold mb-12 text-zinc-300 tracking-tighter uppercase relative">
             <span className="absolute -inset-4 blur-2xl bg-white/5 rounded-full pointer-events-none"></span>
-            ? READY TO <span className="text-white drop-shadow-[0_0_20px_rgba(255,255,255,0.4)]">CREATE</span>
+            READY TO <span className="text-white drop-shadow-[0_0_20px_rgba(255,255,255,0.4)]">CREATE?</span>
           </h2>
           
           <div className="flex justify-center gap-8 mb-24 relative z-10">
