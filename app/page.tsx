@@ -316,7 +316,7 @@ export default function RotsWebLanding() {
         >
           <h2 className="text-4xl md:text-6xl font-extrabold mb-12 text-zinc-300 tracking-tighter uppercase relative">
             <span className="absolute -inset-4 blur-2xl bg-white/5 rounded-full pointer-events-none"></span>
-            READY TO <span className="text-white drop-shadow-[0_0_20px_rgba(255,255,255,0.4)]">CREATE?</span>
+            ? READY TO <span className="text-white drop-shadow-[0_0_20px_rgba(255,255,255,0.4)]">CREATE</span>
           </h2>
           
           <div className="flex justify-center gap-8 mb-24 relative z-10">
