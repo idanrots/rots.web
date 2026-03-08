@@ -8,7 +8,6 @@ import {
   Zap,
   Mail,
   Fingerprint,
-  Phone,
   User,
   Box,
   Target
@@ -137,7 +136,7 @@ export default function RotsWebLanding() {
           className="pointer-events-auto flex items-center justify-center gap-3 w-full py-4 rounded-full bg-white/10 backdrop-blur-xl border border-white/20 text-white font-bold tracking-widest uppercase shadow-[0_10px_40px_rgba(0,0,0,0.8)]"
         >
           <span>התחל פרויקט</span>
-          <Phone size={16} />
+          <MessageCircle size={16} />
         </motion.a>
       </motion.div>
 
@@ -151,7 +150,7 @@ export default function RotsWebLanding() {
             <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.8 }} className="flex items-center">
                 <motion.a whileTap={{ scale: 0.95 }} href={whatsappLink} target="_blank" rel="noopener noreferrer" className="group flex items-center gap-2 px-6 py-2.5 rounded-full border border-zinc-700/40 bg-white/[0.02] hover:bg-white text-zinc-300 hover:text-black font-bold text-xs transition-all duration-500 tracking-widest uppercase hover:shadow-[0_0_20px_rgba(255,255,255,0.2)]">
                     <span className="hidden sm:block">בואו נדבר</span>
-                    <Phone size={14} className="group-hover:rotate-12 transition-transform duration-300" />
+                    <MessageCircle size={14} className="group-hover:scale-110 transition-transform duration-300" />
                 </motion.a>
             </motion.div>
         </div>
@@ -176,7 +175,7 @@ export default function RotsWebLanding() {
                   <div className="absolute -inset-1.5 bg-gradient-to-r from-white/10 via-zinc-400/20 to-white/10 rounded-full blur-md opacity-0 group-hover:opacity-100 transition duration-700 animate-spin-slow pointer-events-none"></div>
                   <motion.a whileTap={{ scale: 0.95 }} href={whatsappLink} target="_blank" rel="noopener noreferrer" className="relative px-10 py-5 bg-zinc-100 text-black rounded-full font-bold transition-all hover:bg-white hover:scale-[1.02] flex items-center justify-center gap-3 tracking-tight text-lg uppercase shadow-[0_0_30px_rgba(255,255,255,0.1)]">
                     <span>התחלת פרויקט</span>
-                    <Phone className="w-5 h-5 group-hover:animate-pulse" />
+                    <MessageCircle className="w-5 h-5 group-hover:animate-pulse" />
                   </motion.a>
                 </div>
                 <motion.a whileTap={{ scale: 0.95 }} href="#services" className="px-10 py-5 rounded-full border border-zinc-800 bg-transparent hover:bg-zinc-900 transition-all font-medium text-zinc-400 hover:text-white flex items-center justify-center tracking-widest uppercase text-xs">
@@ -254,7 +253,7 @@ export default function RotsWebLanding() {
                   className="w-full h-14 bg-zinc-100 text-black rounded-full flex items-center justify-center gap-3 font-bold text-sm hover:bg-white transition-all hover:shadow-[0_0_25px_rgba(255,255,255,0.3)] mt-2 tracking-widest uppercase relative z-10 md:hidden"
                >
                   <span>התחלת פרויקט</span>
-                  <Phone size={14} />
+                  <MessageCircle size={14} />
                </motion.a>
             </motion.div>
           </motion.div>
@@ -299,8 +298,6 @@ export default function RotsWebLanding() {
                   {item.icon}
                 </div>
                 <h3 className="relative z-10 text-2xl font-bold mb-4 text-zinc-100 tracking-tight drop-shadow-sm">{item.title}</h3>
-                
-                {/* כאן הוספתי את הפונט Segoe_UI רק לטקסט של המומחיות */}
                 <p className="font-['Segoe_UI',_system-ui,_sans-serif] relative z-10 text-zinc-500/90 text-base leading-relaxed tracking-[0.03em] font-normal">{item.desc}</p>
               </motion.div>
             ))}
@@ -319,7 +316,7 @@ export default function RotsWebLanding() {
         >
           <h2 className="text-4xl md:text-6xl font-extrabold mb-12 text-zinc-300 tracking-tighter uppercase relative">
             <span className="absolute -inset-4 blur-2xl bg-white/5 rounded-full pointer-events-none"></span>
-            ? READY TO <span className="text-white drop-shadow-[0_0_20px_rgba(255,255,255,0.4)]">CREATE</span>
+            READY TO <span className="text-white drop-shadow-[0_0_20px_rgba(255,255,255,0.4)]">CREATE?</span>
           </h2>
           
           <div className="flex justify-center gap-8 mb-24 relative z-10">
