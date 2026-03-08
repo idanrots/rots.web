@@ -92,7 +92,7 @@ export default function RotsWebLanding() {
     visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } }
   };
 
-  // Spotlight Effect Handler (Desktop only mostly)
+  // Spotlight Effect Handler 
   const handleSpotlight = (e: React.MouseEvent<HTMLDivElement>) => {
     const rect = e.currentTarget.getBoundingClientRect();
     const x = e.clientX - rect.left;
@@ -104,13 +104,16 @@ export default function RotsWebLanding() {
   return (
     <div dir="rtl" className="min-h-screen bg-[#050505] text-zinc-300 font-sans selection:bg-zinc-800 selection:text-white overflow-x-hidden scroll-smooth relative">
       
-      {/* Cinematic Grain Overlay */}
+      <style dangerouslySetInnerHTML={{__html: `
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+      `}} />
+
       <div 
         className="pointer-events-none fixed inset-0 z-[60] h-full w-full opacity-[0.03] mix-blend-overlay" 
         style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg viewBox=%220 0 200 200%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22noiseFilter%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.8%22 numOctaves=%223%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23noiseFilter)%22/%3E%3C/svg%3E")' }}
       ></div>
 
-      {/* Background Effect - Breathing Aurora */}
       <div className="fixed inset-0 z-0 pointer-events-none opacity-40">
         <motion.div 
           animate={{ scale: [1, 1.05, 1], opacity: [0.3, 0.5, 0.3] }}
@@ -120,7 +123,6 @@ export default function RotsWebLanding() {
         <div className="absolute bottom-0 left-0 right-0 h-1/2 bg-gradient-to-t from-zinc-900/20 to-transparent"></div>
       </div>
 
-      {/* Mobile Floating Sticky CTA (Shows ONLY on Mobile) */}
       <motion.div 
         initial={{ y: 100, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
@@ -139,7 +141,6 @@ export default function RotsWebLanding() {
         </motion.a>
       </motion.div>
 
-      {/* Navbar */}
       <nav className="fixed top-0 w-full z-50 border-b border-white/[0.03] bg-[#050505]/60 backdrop-blur-2xl">
         <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
             <motion.div initial={{ opacity: 0, filter: "blur(5px)" }} animate={{ opacity: 1, filter: "blur(0px)" }} transition={{ duration: 1 }} className="flex items-center gap-3 cursor-pointer">
@@ -156,7 +157,6 @@ export default function RotsWebLanding() {
         </div>
       </nav>
 
-      {/* Hero Section */}
       <header className="relative min-h-screen flex items-center justify-center pt-32 pb-24 px-6 z-10">
         <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-16 lg:gap-20 items-center">
           
@@ -167,7 +167,7 @@ export default function RotsWebLanding() {
                 <motion.span variants={textVariants} className="bg-gradient-to-r from-zinc-300 to-zinc-500 bg-clip-text text-transparent">נוכחות חזקה.</motion.span>
               </h1>
               
-              <motion.p variants={textVariants} className="text-xl text-zinc-500 max-w-lg mb-12 font-light leading-relaxed tracking-wide">
+              <motion.p variants={textVariants} className="text-xl text-zinc-500/95 max-w-lg mb-12 font-medium leading-relaxed tracking-[0.03em]">
                 אנחנו יוצרים חוויות רשת נקיות, מדויקות וממוקדות. <br />בלי רעשי רקע, רק עיצוב פרימיום.
               </motion.p>
               
@@ -261,7 +261,7 @@ export default function RotsWebLanding() {
         </div>
       </header>
 
-      {/* Services Section - RESTORED TO VERTICAL STACK ON MOBILE */}
+      {/* Services Section */}
       <section id="services" className="py-32 relative z-10 bg-zinc-950/20 border-t border-zinc-900/30 overflow-hidden">
         <div className="max-w-7xl mx-auto px-6">
           <motion.div 
@@ -275,7 +275,6 @@ export default function RotsWebLanding() {
             <div className="h-px w-12 bg-zinc-600 mt-4"></div>
           </motion.div>
 
-          {/* Regular Grid for both Mobile (1 column) and Desktop (3 columns) */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
             {services.map((item, idx) => (
               <motion.div 
@@ -291,7 +290,6 @@ export default function RotsWebLanding() {
                 whileTap={{ scale: 0.98 }}
                 className="group relative p-10 rounded-[2.5rem] bg-[#0A0A0A] border border-white/[0.03] transition-all duration-500 overflow-hidden"
               >
-                {/* CSS Magic for Mouse Spotlight */}
                 <div 
                   className="hidden md:block pointer-events-none absolute -inset-px rounded-[2.5rem] opacity-0 transition duration-300 group-hover:opacity-100"
                   style={{ background: `radial-gradient(600px circle at var(--mouse-x, 0) var(--mouse-y, 0), rgba(255,255,255,0.06), transparent 40%)` }}
@@ -301,7 +299,9 @@ export default function RotsWebLanding() {
                   {item.icon}
                 </div>
                 <h3 className="relative z-10 text-2xl font-bold mb-4 text-zinc-100 tracking-tight drop-shadow-sm">{item.title}</h3>
-                <p className="relative z-10 text-zinc-500 text-base leading-relaxed font-light">{item.desc}</p>
+                
+                {/* כאן הוספתי את הפונט Segoe_UI רק לטקסט של המומחיות */}
+                <p className="font-['Segoe_UI',_system-ui,_sans-serif] relative z-10 text-zinc-500/90 text-base leading-relaxed tracking-[0.03em] font-normal">{item.desc}</p>
               </motion.div>
             ))}
           </div>
@@ -319,7 +319,7 @@ export default function RotsWebLanding() {
         >
           <h2 className="text-4xl md:text-6xl font-extrabold mb-12 text-zinc-300 tracking-tighter uppercase relative">
             <span className="absolute -inset-4 blur-2xl bg-white/5 rounded-full pointer-events-none"></span>
-            ? READY TO <span className="text-white drop-shadow-[0_0_20px_rgba(255,255,255,0.4)]">CREATE</span>
+            READY TO <span className="text-white drop-shadow-[0_0_20px_rgba(255,255,255,0.4)]">CREATE?</span>
           </h2>
           
           <div className="flex justify-center gap-8 mb-24 relative z-10">
